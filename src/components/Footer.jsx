@@ -11,10 +11,17 @@ export default function Footer() {
         {/* Brand */}
         <div className={`footer-brand anim fade-up ${inView ? 'in-view' : ''}`}>
           <div className="footer-logo">
-            <span className="logo-mark">MFG</span>
-            <span>Microfinish<br /><small>Valves &amp; Pumps</small></span>
+            <span className="logo-mark">SBI</span>
+            <span>Shree Balaji<br /><small>Industries</small></span>
           </div>
           <p className="footer-tagline">Engineered to hold the line since 1971.</p>
+          <div className="footer-contact-details">
+            <p>Santosh Athani</p>
+            <p><a href="tel:9900431038">9900431038</a> / <a href="tel:8453549143">8453549143</a></p>
+            <p><a href="mailto:shreebalajisbi2016@gmail.com">shreebalajisbi2016@gmail.com</a></p>
+            <p>15-B, 1st Gate/Cross Industrial Estate,<br />Gokul Road, Hubballi, Karnataka – 580030</p>
+            <p className="footer-gst">GSTIN: 29AUWPG6619B1ZB</p>
+          </div>
           <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="footer-linkedin" aria-label="LinkedIn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path d="M20.447 20.452H17.21v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.985V9h3.102v1.561h.046c.432-.818 1.487-1.681 3.061-1.681 3.274 0 3.878 2.155 3.878 4.958v6.614zM5.337 7.433a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6zm1.554 13.019H3.783V9h3.108v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
@@ -58,7 +65,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom container">
-        <span className="mono">© {year} Microfinish Group. All rights reserved.</span>
+        <span className="mono">© {year} Shree Balaji Industries. All rights reserved.</span>
         <span className="mono">ISO 9001 · API 6D CERTIFIED</span>
       </div>
     </footer>

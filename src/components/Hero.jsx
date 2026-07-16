@@ -3,18 +3,18 @@ import { useEffect, useRef, useState } from 'react';
 import './Hero.css';
 
 const STATS = [
-  { value: '50+', label: 'Years in Service' },
-  { value: '13',  label: 'Product Lines'    },
-  { value: '40+', label: 'Countries Served' },
+  { end: 50, suffix: '+', label: 'Years in Service' },
+  { end: 13, suffix: '',  label: 'Product Lines'    },
+  { end: 40, suffix: '+', label: 'Countries Served' },
 ];
 
 const BADGES = ['ISO 9001', 'API 6D', 'API 6D-0301'];
 
 const SLIDES = [
   {
-    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85',
-    name: 'Trunnion Mounted Ball Valve',
-    spec: 'DN 150 · CLASS 600 · API 6D',
+    img: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&q=85',
+    name: 'SBI Precision Valve',
+    spec: 'API 6D · ISO 9001 · EST. 1971',
   },
   {
     img: 'https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=800&q=85',
@@ -29,6 +29,45 @@ const SLIDES = [
 ];
 
 const WORDS = ['ENGINEERED', 'TO HOLD', 'THE LINE'];
+
+function useCountUp(end, duration = 1800) {
+  const [count, setCount] = useState(0);
+  const started = useRef(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !started.current) {
+        started.current = true;
+        const start = performance.now();
+        const tick = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          setCount(Math.floor(progress * end));
+          if (progress < 1) requestAnimationFrame(tick);
+          else setCount(end);
+        };
+        requestAnimationFrame(tick);
+      }
+    }, { threshold: 0.5 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [end, duration]);
+
+  return { ref, count };
+}
+
+function StatItem({ end, suffix, label, index, divider }) {
+  const { ref, count } = useCountUp(end);
+  return (
+    <div ref={ref} className="stat">
+      {divider && <div className="stat-divider" aria-hidden="true" />}
+      <span className="stat-value">{count}{suffix}</span>
+      <span className="stat-label">{label}</span>
+    </div>
+  );
+}
 
 export default function Hero() {
   const [slide, setSlide] = useState(0);
@@ -140,11 +179,7 @@ export default function Hero() {
 
           <div className="hero-stats anim fade-up in-view delay-4">
             {STATS.map((s, i) => (
-              <div key={s.label} className="stat">
-                {i > 0 && <div className="stat-divider" aria-hidden="true" />}
-                <span className="stat-value">{s.value}</span>
-                <span className="stat-label">{s.label}</span>
-              </div>
+              <StatItem key={s.label} end={s.end} suffix={s.suffix} label={s.label} index={i} divider={i > 0} />
             ))}
           </div>
         </div>

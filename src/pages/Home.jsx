@@ -3,6 +3,7 @@ import Hero from '../components/Hero';
 import ProductCard from '../components/ProductCard';
 import IndustryCard from '../components/IndustryCard';
 import useInView from '../hooks/useInView';
+import sbiFactory from '../assets/sbi-factory.jpg';
 import './Home.css';
 
 const FEATURED_PRODUCTS = [
@@ -37,8 +38,8 @@ export default function Home() {
         <div ref={aboutRef} className="container about-teaser-inner">
           <div className={`about-teaser-img-col anim fade-left ${aboutIn ? 'in-view' : ''}`}>
             <img
-              src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=700&q=80"
-              alt="Valve manufacturing facility"
+              src={sbiFactory}
+              alt="Shree Balaji Industries manufacturing facility"
               className="about-teaser-img"
             />
             <div className="about-teaser-img-badge">
@@ -50,7 +51,7 @@ export default function Home() {
             <p className="section-eyebrow">About Us</p>
             <h2 className="section-title">Built on Precision.<br />Trusted by Industry.</h2>
             <div className="about-teaser-body">
-              <p>Since 1971, Microfinish Group has engineered flow-control solutions for the world's most demanding industrial environments. Our ISO 9001 and API 6D certified manufacturing ensures every valve and pump meets the highest standards of safety, reliability, and performance.</p>
+              <p>Since 1971, Shree Balaji Industries has engineered flow-control solutions for the world's most demanding industrial environments. Our ISO 9001 and API 6D certified manufacturing ensures every valve and pump meets the highest standards of safety, reliability, and performance.</p>
               <Link to="/about" className="btn-primary" style={{marginTop:'1.25rem',display:'inline-block'}}>Read More</Link>
             </div>
           </div>

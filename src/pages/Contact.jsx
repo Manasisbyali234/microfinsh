@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import useInView from '../hooks/useInView';
+import sbiFactory from '../assets/sbi-factory.jpg';
 import './Contact.css';
 
 const INDUSTRIES = [
@@ -84,23 +85,39 @@ export default function Contact() {
             {/* Factory image */}
             <div className="contact-office-img-wrap">
               <img
-                src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=700&q=80"
-                alt="Microfinish manufacturing facility"
+                src={sbiFactory}
+                alt="Shree Balaji Industries manufacturing facility"
                 className="contact-office-img"
               />
             </div>
 
             <div className="info-block">
               <span className="info-label">Address</span>
-              <p>Microfinish Group<br />Plot No. 12, Industrial Estate<br />Mumbai, Maharashtra 400001<br />India</p>
+              <p>
+                Shree Balaji Industries<br />
+                15-B, 1st Gate/Cross Industrial Estate,<br />
+                Gokul Road, Hubballi,<br />
+                Dharwad, Karnataka – 580030
+              </p>
+            </div>
+            <div className="info-block">
+              <span className="info-label">GST Registration</span>
+              <p className="mono-sm">29AUWPG6619B1ZB</p>
             </div>
             <div className="info-block">
               <span className="info-label">Phone</span>
-              <p>+91 22 0000 0000</p>
+              <p>
+                <a href="tel:9900431038">9900431038</a><br />
+                <a href="tel:8453549143">8453549143</a>
+              </p>
             </div>
             <div className="info-block">
               <span className="info-label">Email</span>
-              <p>info@microfinishgroup.com</p>
+              <p><a href="mailto:shreebalajisbi2016@gmail.com">shreebalajisbi2016@gmail.com</a></p>
+            </div>
+            <div className="info-block">
+              <span className="info-label">Contact Person</span>
+              <p>Santosh Athani</p>
             </div>
             <div className="info-block">
               <span className="info-label">Connect</span>

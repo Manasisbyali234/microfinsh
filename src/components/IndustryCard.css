@@ -1,15 +1,17 @@
 .industry-card {
-  border-radius: var(--radius);
+  border-radius: 16px;
   overflow: hidden;
   border: 1.5px solid var(--color-line);
-  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  transition: box-shadow 0.2s, transform 0.2s;
   cursor: default;
+  -webkit-tap-highlight-color: transparent;
 }
 .industry-card:hover {
-  border-color: var(--color-accent);
   box-shadow: 0 6px 20px rgba(79,168,216,0.18);
   transform: translateY(-2px);
 }
+.industry-card:active { transform: scale(0.97); }
+
 .industry-img-wrap {
   position: relative;
   height: 120px;

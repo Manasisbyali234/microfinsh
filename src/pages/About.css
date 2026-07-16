@@ -13,7 +13,7 @@
   align-items: flex-end;
 }
 .about-header-img-wrap { position: absolute; inset: 0; }
-.about-header-img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+.about-header-img { width: 100%; height: 100%; object-fit: cover; object-position: center center; }
 .about-header-overlay {
   position: absolute;
   inset: 0;
@@ -258,4 +258,7 @@
   .timeline-item { grid-template-columns: 60px 20px 1fr; }
   .about-img-stack { grid-template-columns: 1fr; }
   .about-img-main-wrap { grid-column: auto; }
+  .about-header-content { padding: 2rem 1rem; }
+  .tabs { gap: 0; }
+  .tab-btn { font-size: 0.8rem; padding: 0.6rem 0.75rem; }
 }
