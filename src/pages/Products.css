@@ -1,0 +1,89 @@
+/* Products page header with image */
+.products-header {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  min-height: 280px;
+  display: flex;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--color-line);
+}
+.products-header-img-wrap {
+  position: absolute;
+  inset: 0;
+}
+.products-header-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.products-header-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(12,24,31,0.82) 40%, rgba(12,24,31,0.4));
+}
+.products-header-content {
+  position: relative;
+  z-index: 1;
+  padding: 3rem 1.5rem;
+}
+
+.products-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.filter-tabs { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.filter-btn {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.45rem 1rem;
+  border: 1.5px solid var(--color-line);
+  border-radius: var(--radius);
+  background: var(--color-white);
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.filter-btn:hover { border-color: var(--color-accent); color: var(--color-accent-deep); }
+.filter-btn.active {
+  background: var(--color-accent-deep);
+  border-color: var(--color-accent-deep);
+  color: var(--color-white);
+}
+.search-input {
+  padding: 0.55rem 1rem;
+  border: 1.5px solid var(--color-line);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--color-ink);
+  background: var(--color-white);
+  min-width: 220px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.search-input:focus { border-color: var(--color-accent-deep); }
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+.no-results {
+  grid-column: 1/-1;
+  text-align: center;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 3rem 0;
+}
+
+@media (max-width: 1100px) { .products-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px)  { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px)  { .products-grid { grid-template-columns: 1fr; } }

@@ -1,0 +1,57 @@
+/* ── Keyframes ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes fadeLeft {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeRight {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Base hidden state ── */
+.anim {
+  opacity: 0;
+}
+
+/* ── Triggered state ── */
+.anim.in-view {
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-duration: 0.7s;
+}
+
+.anim.fade-up.in-view    { animation-name: fadeUp; }
+.anim.fade-in.in-view    { animation-name: fadeIn; }
+.anim.fade-left.in-view  { animation-name: fadeLeft; }
+.anim.fade-right.in-view { animation-name: fadeRight; }
+.anim.scale-in.in-view   { animation-name: scaleIn; }
+.anim.slide-down.in-view { animation-name: slideDown; }
+
+/* ── Stagger delays ── */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+.delay-6 { animation-delay: 0.6s; }
+
+/* ── Respect reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .anim { opacity: 1 !important; animation: none !important; }
+}

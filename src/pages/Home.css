@@ -1,0 +1,184 @@
+.about-teaser-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+.about-teaser-img-col {
+  position: relative;
+}
+.about-teaser-img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--color-line);
+  display: block;
+}
+.about-teaser-img-badge {
+  position: absolute;
+  bottom: -1.25rem;
+  right: -1.25rem;
+  background: var(--color-accent-deep);
+  color: #fff;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(28,110,164,0.3);
+}
+.badge-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.badge-txt {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin-top: 0.2rem;
+}
+.about-teaser-body p { color: var(--color-ink-soft); line-height: 1.75; }
+
+.section-alt { background: var(--color-white); }
+
+.card-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.industry-strip {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Certifications section with background image */
+.cert-section {
+  position: relative;
+  padding: 5rem 1.5rem;
+  overflow: hidden;
+}
+.cert-section-bg-wrap {
+  position: absolute;
+  inset: 0;
+}
+.cert-section-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cert-section-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(12,24,31,0.92) 0%, rgba(28,110,164,0.75) 100%);
+}
+.cert-section-inner {
+  position: relative;
+  z-index: 1;
+}
+.cert-row {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+.cert-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1.5px solid rgba(184,212,232,0.3);
+  border-radius: var(--radius);
+  padding: 1.25rem 2rem;
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(4px);
+  min-width: 150px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.cert-badge:hover {
+  background: rgba(255,255,255,0.13);
+  border-color: rgba(184,212,232,0.6);
+}
+.cert-label {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #4FA8D8;
+  letter-spacing: 0.06em;
+}
+.cert-sub {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(184,212,232,0.7);
+  margin-top: 0.3rem;
+}
+
+/* CTA banner with real image */
+.cta-banner {
+  position: relative;
+  padding: 5rem 1.5rem;
+  overflow: hidden;
+}
+.cta-banner-bg-wrap {
+  position: absolute;
+  inset: 0;
+}
+.cta-banner-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cta-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(12,24,31,0.88) 40%, rgba(12,24,31,0.6));
+}
+.cta-banner-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.cta-banner-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
+.cta-btn-outline {
+  display: inline-block;
+  background: transparent;
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: var(--radius);
+  border: 2px solid rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.cta-btn-outline:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+
+@media (max-width: 1100px) {
+  .card-grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .industry-strip { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .about-teaser-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-teaser-img { height: 260px; }
+  .about-teaser-img-badge { bottom: -1rem; right: 0.5rem; }
+  .card-grid-4 { grid-template-columns: 1fr 1fr; }
+  .industry-strip { grid-template-columns: repeat(2, 1fr); }
+  .cta-banner-inner { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 480px) {
+  .card-grid-4 { grid-template-columns: 1fr; }
+  .industry-strip { grid-template-columns: 1fr 1fr; }
+}
