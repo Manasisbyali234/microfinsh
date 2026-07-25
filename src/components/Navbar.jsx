@@ -37,20 +37,26 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
+  // Only Home page has a full-viewport dark hero; all other pages need light navbar from the start
+  const isHome = location.pathname === '/';
+  const lightNav = !isHome || scrolled;
+
   useEffect(() => { setMenuOpen(false); setDropdown(null); }, [location]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
+    // Re-check on route change (scroll position may not be 0 immediately)
+    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [location]);
 
   const toggleDropdown = (key) => setDropdown(d => d === key ? null : key);
 
   return (
     <>
       {/* ── Desktop / Top App Bar ── */}
-      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+      <nav className={`navbar ${lightNav ? 'scrolled' : ''}`}>
         <div className="navbar-inner container">
           <Link to="/" className="navbar-logo">
             <span className="logo-mark">SBI</span>

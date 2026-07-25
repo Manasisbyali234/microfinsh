@@ -8,13 +8,13 @@ const STATS = [
   { end: 40, suffix: '+', label: 'Countries Served' },
 ];
 
-const BADGES = ['ISO 9001', 'API 6D', 'API 6D-0301'];
+const BADGES = ['EST. 2010', 'Founder: Santosh Athani'];
 
 const SLIDES = [
   {
     img: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&q=85',
     name: 'SBI Precision Valve',
-    spec: 'API 6D · ISO 9001 · EST. 1971',
+    spec: 'EST. 2010 · Founder: Santosh Athani',
   },
   {
     img: 'https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=800&q=85',
@@ -32,27 +32,21 @@ const WORDS = ['ENGINEERED', 'TO HOLD', 'THE LINE'];
 
 function useCountUp(end, duration = 1800) {
   const [count, setCount] = useState(0);
-  const started = useRef(false);
   const ref = useRef(null);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !started.current) {
-        started.current = true;
-        const start = performance.now();
-        const tick = (now) => {
-          const progress = Math.min((now - start) / duration, 1);
-          setCount(Math.floor(progress * end));
-          if (progress < 1) requestAnimationFrame(tick);
-          else setCount(end);
-        };
-        requestAnimationFrame(tick);
-      }
-    }, { threshold: 0.5 });
-    observer.observe(el);
-    return () => observer.disconnect();
+    const timeout = setTimeout(() => {
+      let startTime = null;
+      const tick = (now) => {
+        if (!startTime) startTime = now;
+        const progress = Math.min((now - startTime) / duration, 1);
+        setCount(Math.floor(progress * end));
+        if (progress < 1) requestAnimationFrame(tick);
+        else setCount(end);
+      };
+      requestAnimationFrame(tick);
+    }, 600);
+    return () => clearTimeout(timeout);
   }, [end, duration]);
 
   return { ref, count };
@@ -140,7 +134,7 @@ export default function Hero() {
           <div className="hero-eyebrow-wrap anim slide-down in-view">
             <span className="hero-eyebrow">
               <span className="eyebrow-dot" />
-              EST. 1971 · ISO 9001 · API 6D CERTIFIED
+              EST. 2010 · FOUNDER: SANTOSH ATHANI
             </span>
           </div>
 
@@ -186,6 +180,11 @@ export default function Hero() {
 
         {/* RIGHT — 3-D tilt card with sliding images */}
         <div className="hero-visual anim fade-right in-view delay-2">
+
+          {/* Rotating orbit circles behind card */}
+          <div className="hero-orbit hero-orbit-1" aria-hidden="true" />
+          <div className="hero-orbit hero-orbit-2" aria-hidden="true" />
+          <div className="hero-orbit hero-orbit-3" aria-hidden="true" />
 
           {/* Rotating glow ring behind card */}
           <div className="hero-card-ring" aria-hidden="true" />
@@ -249,7 +248,7 @@ export default function Hero() {
                 <path id="circle-text" d="M 60,60 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0" />
               </defs>
               <text fontSize="10.5" fill="#4FA8D8" letterSpacing="3" fontFamily="JetBrains Mono, monospace" fontWeight="600">
-                <textPath href="#circle-text">API 6D CERTIFIED · ISO 9001 · EST.1971 · </textPath>
+                <textPath href="#circle-text">EST. 2010 · SANTOSH ATHANI · FOUNDER · </textPath>
               </text>
               <circle cx="60" cy="60" r="6" fill="#4FA8D8" />
             </svg>

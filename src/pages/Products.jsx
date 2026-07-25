@@ -17,9 +17,11 @@ const ALL_PRODUCTS = [
   { name: 'Chemical Process Pumps', category: 'Pumps', description: 'ISO 2858 / ASME B73.1 centrifugal pumps for corrosive media.' },
   { name: 'Actuators', category: 'Actuators', description: 'Pneumatic and electric actuators for automated valve control.' },
   { name: 'Automation', category: 'Automation', description: 'Positioners, limit switches, and solenoid valve assemblies.' },
+  { name: 'Vertical Air Receiver Tank', category: 'Tanks', description: 'Vertical air receiver tanks for compressed air storage and pressure regulation.' },
+  { name: 'Stainless Steel Idler Convertor Roller', category: 'Rollers', description: 'Stainless steel idler convertor rollers for conveyor and material handling systems.' },
 ];
 
-const CATEGORIES = ['All', 'Valves', 'Pumps', 'Actuators', 'Automation'];
+const CATEGORIES = ['All', 'Valves', 'Pumps', 'Actuators', 'Automation', 'Tanks', 'Rollers'];
 
 export default function Products() {
   const [filter, setFilter] = useState('All');
@@ -47,7 +49,7 @@ export default function Products() {
         <div ref={headerRef} className="container products-header-content">
           <p className={`section-eyebrow anim fade-up ${headerIn ? 'in-view' : ''}`} style={{color:'#B8D4E8'}}>Products</p>
           <h1 className={`section-title anim fade-up delay-1 ${headerIn ? 'in-view' : ''}`} style={{fontSize:'clamp(2rem,4vw,3rem)',color:'#fff'}}>
-            13 Product Lines.<br />One Standard: Excellence.
+            15 Product Lines.<br />One Standard: Excellence.
           </h1>
         </div>
       </section>

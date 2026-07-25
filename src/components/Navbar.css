@@ -9,14 +9,18 @@
   position: sticky;
   top: 0;
   z-index: 200;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s, backdrop-filter 0.3s, color 0.3s;
+}
+.navbar.scrolled {
   background: rgba(255,255,255,0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-line);
-  transition: box-shadow 0.2s;
-}
-.navbar.scrolled {
-  box-shadow: 0 2px 16px rgba(28,110,164,0.10);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
 .navbar-inner {
   display: flex;
@@ -49,6 +53,7 @@
   color: var(--color-ink);
   line-height: 1.2;
   text-transform: uppercase;
+  transition: color 0.3s;
 }
 .logo-text small {
   font-family: var(--font-body);
@@ -77,6 +82,32 @@
 .nav-links a:hover,
 .nav-links a.active { color: var(--color-accent-deep); background: var(--color-bg); }
 
+/* When navbar is transparent (at top of Home hero), make top-level links white.
+   Exclude .dropdown li a so the panel always renders with dark text. */
+.navbar:not(.scrolled) .nav-links > li > a,
+.navbar:not(.scrolled) .dropdown-trigger {
+  color: rgba(255,255,255,0.85);
+}
+.navbar:not(.scrolled) .nav-links > li > a:hover,
+.navbar:not(.scrolled) .nav-links > li > a.active,
+.navbar:not(.scrolled) .dropdown-trigger:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.1);
+}
+.navbar:not(.scrolled) .logo-text { color: #fff; }
+.navbar:not(.scrolled) .logo-text small { color: rgba(255,255,255,0.6); }
+.navbar:not(.scrolled) .nav-hamburger span { background: #fff; }
+
+/* Light navbar (scrolled or non-Home pages) — explicit dark text */
+.navbar.scrolled .nav-links a,
+.navbar.scrolled .dropdown-trigger { color: #1f2937; }
+.navbar.scrolled .nav-links a:hover,
+.navbar.scrolled .dropdown-trigger:hover { color: #0B74D1; background: var(--color-bg); }
+.navbar.scrolled .nav-links a.active { color: #0B74D1; background: var(--color-bg); }
+.navbar.scrolled .logo-text { color: #1f2937; }
+.navbar.scrolled .logo-text small { color: var(--color-muted); }
+.navbar.scrolled .nav-hamburger span { background: #1f2937; }
+
 .dropdown-trigger {
   font-family: var(--font-body);
   font-weight: 500;
@@ -103,24 +134,37 @@
   position: absolute;
   top: calc(100% + 6px);
   left: 0;
-  background: var(--color-white);
+  background: #ffffff;
   border: 1px solid var(--color-line);
-  border-radius: 8px;
+  border-radius: 12px;
   min-width: 230px;
   list-style: none;
-  box-shadow: 0 8px 32px rgba(28,110,164,0.12);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
   z-index: 300;
   padding: 0.4rem 0;
 }
 .has-dropdown:hover .dropdown,
 .dropdown-open .dropdown { display: block; }
+/* Fully isolated dropdown link styles — never inherit navbar link color */
 .dropdown li a {
   display: block;
   padding: 0.55rem 1.1rem;
+  font-family: var(--font-body);
   font-size: 0.83rem;
-  color: var(--color-ink-soft);
+  font-weight: 400;
+  color: #1f2937 !important;
+  background: transparent;
+  transition: background 0.25s, color 0.25s;
 }
-.dropdown li a:hover { background: var(--color-bg); color: var(--color-accent-deep); }
+.dropdown li a:hover {
+  background: #f3f8ff !important;
+  color: #0B74D1 !important;
+}
+.dropdown li a.active {
+  background: #e8f2ff !important;
+  color: #0B74D1 !important;
+  font-weight: 600;
+}
 
 /* ── Hamburger ── */
 .nav-hamburger {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import useInView from '../hooks/useInView';
 import sbiFactory from '../assets/sbi-factory.jpg';
 import './About.css';
@@ -36,6 +36,21 @@ export default function About() {
   const [timelineRef, timelineIn] = useInView();
   const [tabsRef, tabsIn] = useInView();
 
+  const milestoneRefs = useRef([]);
+  const [milestoneIn, setMilestoneIn] = useState(Array(MILESTONES.length).fill(false));
+  useEffect(() => {
+    const observers = milestoneRefs.current.map((el, i) => {
+      if (!el) return null;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) { setMilestoneIn(prev => { const n = [...prev]; n[i] = true; return n; }); obs.disconnect(); } },
+        { threshold: 0.3 }
+      );
+      obs.observe(el);
+      return obs;
+    });
+    return () => observers.forEach(o => o?.disconnect());
+  }, []);
+
   return (
     <main>
       {/* Page header with image */}
@@ -54,9 +69,9 @@ export default function About() {
             Over Five Decades of<br />Engineering Excellence
           </h1>
           <div className={`about-header-stats anim fade-up delay-2 ${headerIn ? 'in-view' : ''}`}>
-            {[['1971','Founded'],['ISO 9001','Certified'],['API 6D','Licensed'],['40+','Countries']].map(([v,l]) => (
+            {[['1971','Founded'],['ISO 9001','Certified'],['API 6D','Licensed'],['40+','Countries']].map(([v,l], i) => (
               <div key={l} className="about-header-stat">
-                <span className="about-header-stat-val">{v}</span>
+                <span className="about-header-stat-val" style={{ animationDelay: `${0.3 + i * 0.1}s` }}>{v}</span>
                 <span className="about-header-stat-lbl">{l}</span>
               </div>
             ))}
@@ -72,7 +87,11 @@ export default function About() {
             <h2 className={`section-title anim fade-up delay-1 ${timelineIn ? 'in-view' : ''}`}>Key Milestones</h2>
             <div className="timeline">
               {MILESTONES.map((m, i) => (
-                <div key={m.year} className={`timeline-item anim fade-left delay-${i + 1} ${timelineIn ? 'in-view' : ''}`}>
+                <div
+                  key={m.year}
+                  ref={el => milestoneRefs.current[i] = el}
+                  className={`timeline-item ${milestoneIn[i] ? 'milestone-visible' : ''}`}
+                >
                   <div className="timeline-year">{m.year}</div>
                   <div className="timeline-dot" />
                   <div className="timeline-text">{m.text}</div>
@@ -116,7 +135,7 @@ export default function About() {
                 >{t}</button>
               ))}
             </div>
-            <div className="tab-panel">
+            <div className="tab-panel" key={activeTab}>
               <p>{TAB_CONTENT[activeTab]}</p>
             </div>
           </div>

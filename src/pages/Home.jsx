@@ -11,6 +11,8 @@ const FEATURED_PRODUCTS = [
   { name: 'Cryogenic Valves', category: 'Valves', description: 'Designed for LNG and air separation service down to -196°C.' },
   { name: 'Chemical Process Pumps', category: 'Pumps', description: 'Corrosion-resistant centrifugal pumps for aggressive media.' },
   { name: 'Actuators', category: 'Actuators', description: 'Pneumatic and electric actuators for automated valve control.' },
+  { name: 'Vertical Air Receiver Tank', category: 'Tanks', description: 'Vertical air receiver tanks for compressed air storage and pressure regulation.' },
+  { name: 'Stainless Steel Idler Convertor Roller', category: 'Rollers', description: 'Stainless steel idler convertor rollers for conveyor and material handling systems.' },
 ];
 
 const INDUSTRIES = ['Oil and Gas','Refining','Chemical and Petrochemical','LNG and Air Separation','Thermal Power Generation','Nuclear'];
@@ -63,16 +65,18 @@ export default function Home() {
         <div ref={productsRef} className="container">
           <p className={`section-eyebrow anim fade-up ${productsIn ? 'in-view' : ''}`}>Our Products</p>
           <h2 className={`section-title anim fade-up delay-1 ${productsIn ? 'in-view' : ''}`}>Featured Product Lines</h2>
-          <div className="card-grid-4">
-            {FEATURED_PRODUCTS.map((p, i) => (
-              <div key={p.name} className={`anim fade-up delay-${i + 1} ${productsIn ? 'in-view' : ''}`}>
+        </div>
+        <div className="carousel-track-wrap">
+          <div className="carousel-track">
+            {[...FEATURED_PRODUCTS, ...FEATURED_PRODUCTS].map((p, i) => (
+              <div key={i} className="carousel-item">
                 <ProductCard {...p} />
               </div>
             ))}
           </div>
-          <div style={{textAlign:'center',marginTop:'2rem'}} className={`anim fade-up delay-5 ${productsIn ? 'in-view' : ''}` }>
-            <Link to="/products" className="btn-secondary">View All Products</Link>
-          </div>
+        </div>
+        <div style={{textAlign:'center',marginTop:'2rem'}} className={`container anim fade-up delay-5 ${productsIn ? 'in-view' : ''}`}>
+          <Link to="/products" className="btn-secondary">View All Products</Link>
         </div>
       </section>
 

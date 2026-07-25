@@ -51,6 +51,27 @@
   margin-top: 2rem;
 }
 
+/* Carousel */
+.carousel-track-wrap {
+  overflow: hidden;
+  margin-top: 2rem;
+}
+@keyframes carousel-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.carousel-track {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+  animation: carousel-scroll 10s linear infinite;
+}
+.carousel-track:hover { animation-play-state: paused; }
+.carousel-item {
+  flex: 0 0 280px;
+  height: 340px;
+}
+
 .industry-strip {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -149,27 +170,6 @@
   .about-teaser-inner { grid-template-columns: 1fr; gap: 2rem; }
   .about-teaser-img { height: 220px; border-radius: 16px; }
   .about-teaser-img-badge { bottom: -0.75rem; right: 0.75rem; border-radius: 12px; }
-
-  /* Horizontal scroll card strip on mobile */
-  .card-grid-4 {
-    grid-template-columns: none;
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    gap: 0.85rem;
-    padding-bottom: 0.75rem;
-    margin-left: -1rem;
-    margin-right: -1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  .card-grid-4 > * {
-    flex: 0 0 72vw;
-    max-width: 280px;
-    scroll-snap-align: start;
-  }
-  .card-grid-4::-webkit-scrollbar { display: none; }
 
   .industry-strip { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
 

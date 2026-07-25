@@ -1,28 +1,57 @@
 import { Link } from 'react-router-dom';
-import sbiProduct from '../assets/sbi-product.jpg';
+import p01 from '../assets/products/p01.jpg';
+import p02 from '../assets/products/p02.jpg';
+import p03 from '../assets/products/p03.jpg';
+import p04 from '../assets/products/p04.jpg';
+import p05 from '../assets/products/p05.jpg';
+import p06 from '../assets/products/p06.jpg';
+import p07 from '../assets/products/p07.jpg';
+import p08 from '../assets/products/p08.jpg';
+import p09 from '../assets/products/p09.jpg';
+import p10 from '../assets/products/p10.jpg';
+import p11 from '../assets/products/p11.jpg';
+import p12 from '../assets/products/p12.jpg';
+import p13 from '../assets/products/p13.jpg';
+import p14 from '../assets/products/p14.jpg';
+import p15 from '../assets/products/p15.jpg';
+import p16 from '../assets/products/p16.jpg';
+import p17 from '../assets/products/p17.jpg';
+import p18 from '../assets/products/p18.jpg';
+import p19 from '../assets/products/p19.jpg';
+import p20 from '../assets/products/p20.jpg';
+import p21 from '../assets/products/p21.jpg';
+import p22 from '../assets/products/p22.jpg';
+import p23 from '../assets/products/p23.jpg';
+import p24 from '../assets/products/p24.jpg';
+import p25 from '../assets/products/p25.jpg';
+import p26 from '../assets/products/p26.jpg';
 import './ProductCard.css';
 
 const IMAGES = {
-  'Trunnion Mounted Ball Valves': sbiProduct,
-  'Floating Ball Valves': sbiProduct,
-  'Low Emission Valves': 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=400&q=80',
-  'Cryogenic Valves': 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=400&q=80',
-  'Metal Seated Valves': sbiProduct,
-  'Oxygen Service Valves': 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&q=80',
-  'Chlorine Service Valves': 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400&q=80',
-  'Bellows Seal Valves': sbiProduct,
-  'Swing Check Valves': 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=80',
-  'Knife Edge Gate Valve': sbiProduct,
-  'Chemical Process Pumps': 'https://images.unsplash.com/photo-1576671081837-49000212a370?w=400&q=80',
-  'Actuators': 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80',
-  'Automation': 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80',
+  'Trunnion Mounted Ball Valves': p01,
+  'Floating Ball Valves':         p02,
+  'Low Emission Valves':          p03,
+  'Cryogenic Valves':             p04,
+  'Metal Seated Valves':          p05,
+  'Oxygen Service Valves':        p06,
+  'Chlorine Service Valves':      p07,
+  'Bellows Seal Valves':          p08,
+  'Swing Check Valves':           p09,
+  'Knife Edge Gate Valve':        p10,
+  'Chemical Process Pumps':       p11,
+  'Actuators':                    p12,
+  'Automation':                   p13,
+  'Vertical Air Receiver Tank':   p25,
+  'Stainless Steel Idler Convertor Roller': p26,
 };
 
 const CATEGORY_FALLBACK = {
-  Valves: sbiProduct,
-  Pumps: 'https://images.unsplash.com/photo-1576671081837-49000212a370?w=400&q=80',
-  Actuators: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80',
-  Automation: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80',
+  Valves: p01,
+  Pumps:  p11,
+  Actuators: p12,
+  Automation: p13,
+  Tanks: p25,
+  Rollers: p26,
 };
 
 export default function ProductCard({ name, category, description }) {

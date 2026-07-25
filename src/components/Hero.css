@@ -33,6 +33,15 @@
   to   { transform: rotate(360deg); }
 }
 
+@keyframes spinCW {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@keyframes spinCCW {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+
 @keyframes badgeFloat {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   50%       { transform: translateY(-10px) rotate(180deg); }
@@ -79,7 +88,9 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding: 6rem 1.5rem 5rem;
+  padding: 2rem 1.5rem 5rem;
+  margin-top: -56px;
+  padding-top: calc(56px + 2rem);
 }
 
 /* ── Background ── */
@@ -325,6 +336,58 @@
   position: relative;
 }
 
+/* ── Decorative rotating circles behind card ── */
+.hero-orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-orbit-1 {
+  width: 560px;
+  height: 560px;
+  border: 1.5px dashed rgba(79, 168, 216, 0.28);
+  animation: spinCW 18s linear infinite;
+}
+.hero-orbit-1::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #4FA8D8;
+  box-shadow: 0 0 10px 3px rgba(79,168,216,0.6);
+}
+.hero-orbit-2 {
+  width: 460px;
+  height: 460px;
+  border: 1px solid rgba(79, 168, 216, 0.15);
+  animation: spinCCW 26s linear infinite;
+}
+.hero-orbit-2::before {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(79,168,216,0.7);
+  box-shadow: 0 0 8px 2px rgba(79,168,216,0.45);
+}
+.hero-orbit-3 {
+  width: 360px;
+  height: 360px;
+  border: 1px dashed rgba(126, 200, 227, 0.12);
+  animation: spinCW 34s linear infinite;
+}
+
 /* Glowing ring behind card */
 .hero-card-ring {
   position: absolute;
@@ -529,7 +592,7 @@
    RESPONSIVE
 ══════════════════════════════════════════════════════ */
 @media (max-width: 960px) {
-  .hero { padding: 5rem 1.25rem 3rem; min-height: auto; }
+  .hero { padding: calc(56px + 1.5rem) 1.25rem 3rem; min-height: auto; }
   .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
   .hero-content { order: 1; }
   .hero-visual { order: 2; }
@@ -539,7 +602,7 @@
 }
 
 @media (max-width: 768px) {
-  .hero { padding: 5rem 1rem 2.5rem; }
+  .hero { padding: calc(56px + 1rem) 1rem 2.5rem; }
   .hero-eyebrow-wrap { margin-bottom: 1rem; }
   .hero-eyebrow {
     font-size: 0.58rem;
@@ -566,7 +629,7 @@
 }
 
 @media (max-width: 480px) {
-  .hero { padding: 4.5rem 0.875rem 2rem; }
+  .hero { padding: calc(56px + 0.75rem) 0.875rem 2rem; }
   .hero-inner { gap: 1.75rem; }
   .hero-eyebrow { font-size: 0.52rem; letter-spacing: 0.08em; }
   .hero-headline { font-size: clamp(1.75rem, 10vw, 2.2rem); line-height: 1.05; }

@@ -44,6 +44,12 @@
   font-weight: 700;
   color: #4FA8D8;
   line-height: 1;
+  display: inline-block;
+  animation: statPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+@keyframes statPop {
+  from { opacity: 0; transform: scale(0.6); }
+  to   { opacity: 1; transform: scale(1); }
 }
 .about-header-stat-lbl {
   font-family: var(--font-mono);
@@ -151,6 +157,12 @@
   top: 0; bottom: 0;
   width: 2px;
   background: var(--color-line);
+  transform-origin: top;
+  animation: lineGrow 1.2s cubic-bezier(0.22,1,0.36,1) 0.3s both;
+}
+@keyframes lineGrow {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
 }
 .timeline-item {
   display: grid;
@@ -159,7 +171,20 @@
   align-items: start;
   margin-bottom: 2rem;
   position: relative;
+  opacity: 0;
+  transform: translateX(-28px);
+  transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1);
 }
+.timeline-item.milestone-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.timeline-item:nth-child(1) { transition-delay: 0s; }
+.timeline-item:nth-child(2) { transition-delay: 0.08s; }
+.timeline-item:nth-child(3) { transition-delay: 0.16s; }
+.timeline-item:nth-child(4) { transition-delay: 0.24s; }
+.timeline-item:nth-child(5) { transition-delay: 0.32s; }
+.timeline-item:nth-child(6) { transition-delay: 0.40s; }
 .timeline-year {
   font-family: var(--font-mono);
   font-size: 0.8rem;
@@ -178,6 +203,18 @@
   margin-top: 0.2rem;
   position: relative;
   z-index: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.timeline-item.milestone-visible .timeline-dot {
+  animation: dotPop 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+@keyframes dotPop {
+  from { transform: scale(0); }
+  to   { transform: scale(1); }
+}
+.timeline-item:hover .timeline-dot {
+  transform: scale(1.5);
+  box-shadow: 0 0 0 4px rgba(28,110,164,0.2);
 }
 .timeline-text {
   font-size: 0.92rem;
@@ -223,6 +260,7 @@
   font-size: 1rem;
   color: var(--color-ink-soft);
   line-height: 1.8;
+  animation: tabTextIn 0.35s cubic-bezier(0.22,1,0.36,1) both;
 }
 .tab-img-wrap {
   position: sticky;
@@ -238,9 +276,23 @@
   object-fit: cover;
   object-position: center 30%;
   display: block;
-  transition: opacity 0.35s ease, transform 0.6s ease;
+  transition: transform 0.6s ease;
+  animation: tabImgIn 0.45s cubic-bezier(0.22,1,0.36,1) both;
 }
 .tab-img-wrap:hover .tab-img { transform: scale(1.03); }
+
+@keyframes tabImgIn {
+  from { opacity: 0; transform: scale(0.97) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.tab-panel {
+  animation: tabTextIn 0.35s cubic-bezier(0.22,1,0.36,1) both;
+}
+@keyframes tabTextIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
 @media (max-width: 900px) {
   .about-history-grid { grid-template-columns: 1fr; }
