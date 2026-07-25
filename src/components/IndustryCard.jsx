@@ -1,15 +1,24 @@
 import './IndustryCard.css';
+import oilGas from '../assets/industries/oil-gas.jpg';
+import refining from '../assets/industries/refining.jpg';
+import chemical from '../assets/industries/chemical.jpg';
+import lng from '../assets/industries/lng.jpg';
+import thermalPower from '../assets/industries/thermal-power.jpg';
+import nuclear from '../assets/industries/nuclear.jpg';
+import pharmaceutical from '../assets/industries/pharmaceutical.jpg';
+import foodBeverage from '../assets/industries/food-beverage.jpg';
+import desalination from '../assets/industries/desalination.jpg';
 
 const IMAGES = {
-  'Oil and Gas': 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&q=80',
-  'Refining': 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=400&q=80',
-  'Chemical and Petrochemical': 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&q=80',
-  'LNG and Air Separation': 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=400&q=80',
-  'Thermal Power Generation': 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400&q=80',
-  'Nuclear': 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80',
-  'Pharmaceutical': 'https://images.unsplash.com/photo-1576671081837-49000212a370?w=400&q=80',
-  'Food and Beverage': 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80',
-  'Desalination': 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=400&q=80',
+  'Oil and Gas': oilGas,
+  'Refining': refining,
+  'Chemical and Petrochemical': chemical,
+  'LNG and Air Separation': lng,
+  'Thermal Power Generation': thermalPower,
+  'Nuclear': nuclear,
+  'Pharmaceutical': pharmaceutical,
+  'Food and Beverage': foodBeverage,
+  'Desalination': desalination,
 };
 
 export default function IndustryCard({ name }) {
@@ -21,6 +30,7 @@ export default function IndustryCard({ name }) {
           alt={name}
           className="industry-img"
           loading="lazy"
+          onError={e => { e.currentTarget.src = oilGas; }}
         />
         <div className="industry-img-overlay" />
         <h3 className="industry-name">{name}</h3>

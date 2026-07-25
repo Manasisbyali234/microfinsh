@@ -181,6 +181,10 @@ export default function Hero() {
         {/* RIGHT — 3-D tilt card with sliding images */}
         <div className="hero-visual anim fade-right in-view delay-2">
 
+          {/* HUD circular rings behind card */}
+          <div className="hero-hud-ring hero-hud-ring-1" aria-hidden="true" />
+          <div className="hero-hud-ring hero-hud-ring-2" aria-hidden="true" />
+
           {/* Rotating orbit circles behind card */}
           <div className="hero-orbit hero-orbit-1" aria-hidden="true" />
           <div className="hero-orbit hero-orbit-2" aria-hidden="true" />

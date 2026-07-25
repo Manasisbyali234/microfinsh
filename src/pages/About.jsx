@@ -33,6 +33,7 @@ const TAB_IMAGES = {
 export default function About() {
   const [activeTab, setActiveTab] = useState(TABS[0]);
   const [headerRef, headerIn] = useInView();
+  const [founderRef, founderIn] = useInView();
   const [timelineRef, timelineIn] = useInView();
   const [tabsRef, tabsIn] = useInView();
 
@@ -73,6 +74,30 @@ export default function About() {
               <div key={l} className="about-header-stat">
                 <span className="about-header-stat-val" style={{ animationDelay: `${0.3 + i * 0.1}s` }}>{v}</span>
                 <span className="about-header-stat-lbl">{l}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Founder story */}
+      <section className="section">
+        <div ref={founderRef} className="container founder-section">
+          <div className="founder-text">
+            <p className={`section-eyebrow anim fade-up ${founderIn ? 'in-view' : ''}`}>Our Story</p>
+            <h2 className={`section-title anim fade-up delay-1 ${founderIn ? 'in-view' : ''}`}>Founded 2010 &mdash; Founder: Santosh Athani</h2>
+            <p className={`founder-lead anim fade-up delay-2 ${founderIn ? 'in-view' : ''}`}>Since 2010, we&apos;ve been turning ideas into impact.</p>
+            <p className={`anim fade-up delay-3 ${founderIn ? 'in-view' : ''}`}>What began as a bold vision by our founder, Santosh Athani, has blossomed into a story of passion, perseverance, and progress. From humble beginnings, we set out with one goal — to create something people could trust, value, and rely on for years to come.</p>
+            <p className={`anim fade-up delay-4 ${founderIn ? 'in-view' : ''}`}>Today, over a decade later, that goal has grown into a legacy. Every milestone we&apos;ve crossed, every challenge we&apos;ve overcome, and every relationship we&apos;ve built has shaped who we are — a team driven not just by ambition, but by purpose.</p>
+            <p className={`anim fade-up delay-5 ${founderIn ? 'in-view' : ''}`}>We believe great businesses aren&apos;t built on products alone — they&apos;re built on people, trust, and consistency. That&apos;s the foundation we&apos;ve stood on since day one, and it&apos;s what continues to drive us forward.</p>
+            <p className={`anim fade-up delay-6 ${founderIn ? 'in-view' : ''}`}>Our journey has never been just about growth in numbers. It&apos;s been about growing the right way — staying true to our values, listening closely to the people we serve, and constantly evolving to meet their needs. We&apos;ve learned that success isn&apos;t a destination; it&apos;s a continuous process of improvement, learning, and giving back to the people who make our journey possible.</p>
+            <p className={`anim fade-up delay-7 ${founderIn ? 'in-view' : ''}`}>From our very first steps to where we stand today, one thing has remained unchanged — our commitment to doing things with honesty, care, and purpose. This is the story of a company that started small but dreamed big, and continues to write new chapters of success every single day.</p>
+          </div>
+          <div className="founder-highlights">
+            {[['2010','Founded'],['Santosh Athani','Founder'],['15+','Years of Impact'],['Trust','Our Foundation']].map(([val, lbl], i) => (
+              <div key={lbl} className={`founder-highlight-card anim scale-in delay-${i + 2} ${founderIn ? 'in-view' : ''}`}>
+                <span className="founder-highlight-val">{val}</span>
+                <span className="founder-highlight-lbl">{lbl}</span>
               </div>
             ))}
           </div>

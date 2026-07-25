@@ -206,7 +206,9 @@
   display: flex;
   max-height: 80vh;
   overflow-y: auto;
+  scrollbar-width: none;
 }
+.mobile-menu.open::-webkit-scrollbar { display: none; }
 .mobile-menu-item {
   display: flex;
   align-items: center;

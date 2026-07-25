@@ -166,6 +166,7 @@
   gap: 5rem;
   align-items: center;
   width: 100%;
+  min-width: 0;
 }
 
 /* ══════════════════════════════════════════════════════
@@ -334,6 +335,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  min-width: 0;
 }
 
 /* ── Decorative rotating circles behind card ── */
@@ -388,7 +390,6 @@
   animation: spinCW 34s linear infinite;
 }
 
-/* Glowing ring behind card */
 .hero-card-ring {
   position: absolute;
   inset: -28px;
@@ -572,11 +573,59 @@
   color: rgba(184,212,232,0.65);
 }
 
+/* ── HUD circular rings behind card ── */
+@keyframes hudSpin1 {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@keyframes hudSpin2 {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+@keyframes hudPulse {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+.hero-hud-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-hud-ring-1 {
+  width: 820px; height: 820px;
+  border: 1.5px solid rgba(79,168,216,0.35);
+  border-top-color: rgba(79,168,216,0.9);
+  border-right-color: rgba(79,168,216,0.6);
+  animation: hudSpin1 6s linear infinite;
+}
+.hero-hud-ring-2 {
+  width: 720px; height: 720px;
+  border: 1px dashed rgba(79,168,216,0.25);
+  border-bottom-color: rgba(126,200,227,0.8);
+  animation: hudSpin2 9s linear infinite;
+}
+/* glowing dot on each ring */
+.hero-hud-ring-1::before {
+  content: ''; position: absolute; top: -4px; left: 50%; transform: translateX(-50%);
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #4FA8D8; box-shadow: 0 0 14px 4px rgba(79,168,216,0.7);
+  animation: hudPulse 1.5s ease-in-out infinite;
+}
+.hero-hud-ring-2::before {
+  content: ''; position: absolute; bottom: -3px; left: 50%; transform: translateX(-50%);
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #7ec8e3; box-shadow: 0 0 10px 3px rgba(126,200,227,0.6);
+  animation: hudPulse 2s ease-in-out infinite 0.4s;
+}
+
 /* ── Rotating SVG badge ── */
 .hero-rotate-badge {
   position: absolute;
-  bottom: -20px;
-  right: -20px;
+  bottom: 0;
+  right: 0;
   width: 120px;
   height: 120px;
   z-index: 4;
@@ -598,7 +647,7 @@
   .hero-visual { order: 2; }
   .hero-img-card { max-width: 480px; margin: 0 auto; }
   .hero-img-wrap { height: 320px; }
-  .hero-rotate-badge { bottom: -10px; right: -10px; width: 90px; height: 90px; }
+  .hero-rotate-badge { bottom: 0; right: 0; width: 90px; height: 90px; }
 }
 
 @media (max-width: 768px) {

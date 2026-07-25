@@ -1,0 +1,432 @@
+/* ══════════════════════════════════════════
+   GlobalReach — Premium Blueprint Section
+   ══════════════════════════════════════════ */
+
+/* ── Section shell ── */
+.gr-section {
+  position: relative;
+  padding: 5rem 1.5rem 4rem;
+  overflow: hidden;
+  background: #EAF4FB;
+  isolation: isolate;
+}
+
+/* ── Blueprint grid (animated diagonal drift) ── */
+.gr-grid {
+  position: absolute;
+  inset: -60px;
+  background-image:
+    linear-gradient(rgba(79,168,216,0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79,168,216,0.18) 1px, transparent 1px),
+    linear-gradient(rgba(79,168,216,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79,168,216,0.07) 1px, transparent 1px);
+  background-size: 60px 60px, 60px 60px, 20px 20px, 20px 20px;
+  animation: gr-grid-drift 18s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+@keyframes gr-grid-drift {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(60px, 60px); }
+}
+
+/* ── Radial glows ── */
+.gr-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+.gr-glow-1 {
+  width: 600px;
+  height: 600px;
+  top: -150px;
+  left: -100px;
+  background: radial-gradient(circle, rgba(79,168,216,0.14) 0%, transparent 70%);
+}
+.gr-glow-2 {
+  width: 500px;
+  height: 500px;
+  bottom: -100px;
+  right: -80px;
+  background: radial-gradient(circle, rgba(28,110,164,0.12) 0%, transparent 70%);
+}
+
+/* ── World map dots ── */
+.gr-map {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.gr-map-dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #4FA8D8;
+  opacity: 0.45;
+  animation: gr-dot-pulse 3s ease-in-out infinite;
+  transform: translate(-50%, -50%);
+}
+@keyframes gr-dot-pulse {
+  0%, 100% { opacity: 0.25; transform: translate(-50%, -50%) scale(1); }
+  50%       { opacity: 0.7;  transform: translate(-50%, -50%) scale(1.6); }
+}
+.gr-map-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Floating particles ── */
+.gr-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.gr-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: #4FA8D8;
+  opacity: 0;
+  animation: gr-particle-float linear infinite;
+}
+@keyframes gr-particle-float {
+  0%   { opacity: 0;    transform: translateY(0) scale(0.5); }
+  20%  { opacity: 0.55; }
+  80%  { opacity: 0.3;  }
+  100% { opacity: 0;    transform: translateY(-80px) scale(1.2); }
+}
+
+/* ── Industrial plant silhouette ── */
+.gr-plant {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  pointer-events: none;
+  z-index: 0;
+}
+.gr-plant svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Container ── */
+.gr-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Header ── */
+.gr-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+.gr-eyebrow {
+  color: #1C6EA4;
+  margin-bottom: 0.6rem;
+}
+.gr-title {
+  color: #12181F;
+  margin-bottom: 1rem;
+  letter-spacing: 0.04em;
+}
+.gr-subtitle {
+  max-width: 560px;
+  margin: 0 auto;
+  color: #3A4650;
+  font-size: 1rem;
+  line-height: 1.75;
+  opacity: 0.85;
+}
+
+/* ── Carousel wrapper ── */
+.gr-carousel-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  position: relative;
+}
+
+/* ── Nav buttons ── */
+.gr-nav-btn {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(79,168,216,0.4);
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(8px);
+  color: #1C6EA4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.2s;
+  z-index: 2;
+}
+.gr-nav-btn svg { width: 20px; height: 20px; }
+.gr-nav-btn:hover {
+  background: rgba(255,255,255,0.95);
+  border-color: #4FA8D8;
+  box-shadow: 0 0 18px rgba(79,168,216,0.35);
+  transform: scale(1.08);
+}
+
+/* ── Cards grid ── */
+.gr-cards {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  position: relative;
+}
+
+/* ── Connection lines SVG ── */
+.gr-conn-lines {
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 18px;
+  pointer-events: none;
+}
+
+/* ── Individual card ── */
+.gr-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 2.25rem 1.75rem 2rem;
+  border-radius: 20px;
+  border: 1.5px solid rgba(184,212,232,0.55);
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 24px rgba(28,110,164,0.08), 0 1px 4px rgba(28,110,164,0.06);
+  cursor: pointer;
+  transition:
+    transform 0.45s cubic-bezier(0.34,1.56,0.64,1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+  animation: gr-card-float 5s ease-in-out infinite;
+  overflow: hidden;
+}
+.gr-card:nth-child(1) { animation-delay: 0s; }
+.gr-card:nth-child(2) { animation-delay: 0.8s; }
+.gr-card:nth-child(3) { animation-delay: 1.6s; }
+
+@keyframes gr-card-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+.gr-card:hover {
+  box-shadow: 0 12px 40px rgba(79,168,216,0.22), 0 2px 8px rgba(28,110,164,0.1);
+  border-color: rgba(79,168,216,0.7);
+}
+
+/* Active card */
+.gr-card--active {
+  transform: translateY(-6px) scale(1.025);
+  border-color: rgba(79,168,216,0.6);
+  box-shadow: 0 16px 48px rgba(79,168,216,0.2), 0 2px 8px rgba(28,110,164,0.1);
+  animation: gr-card-float-active 5s ease-in-out infinite;
+}
+@keyframes gr-card-float-active {
+  0%, 100% { transform: translateY(-6px) scale(1.025); }
+  50%       { transform: translateY(-14px) scale(1.025); }
+}
+
+/* Highlighted card (LNG) */
+.gr-card--highlight {
+  border-color: rgba(79,168,216,0.75);
+  background: rgba(255,255,255,0.68);
+  box-shadow:
+    0 0 0 1px rgba(79,168,216,0.3),
+    0 8px 40px rgba(79,168,216,0.2),
+    0 2px 8px rgba(28,110,164,0.1);
+}
+.gr-card--highlight.gr-card--active {
+  box-shadow:
+    0 0 0 2px rgba(79,168,216,0.5),
+    0 20px 60px rgba(79,168,216,0.28),
+    0 4px 12px rgba(28,110,164,0.12);
+}
+
+/* Ambient glow behind highlighted card */
+.gr-card-glow {
+  position: absolute;
+  inset: -30px;
+  background: radial-gradient(ellipse at 50% 60%, rgba(79,168,216,0.22) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+  animation: gr-card-glow-pulse 3s ease-in-out infinite;
+}
+@keyframes gr-card-glow-pulse {
+  0%, 100% { opacity: 0.7; }
+  50%       { opacity: 1; }
+}
+
+/* ── Card icon ── */
+.gr-card-icon {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  animation: gr-icon-rotate 12s ease-in-out infinite;
+  filter: drop-shadow(0 4px 12px rgba(79,168,216,0.3));
+}
+@keyframes gr-icon-rotate {
+  0%, 100% { transform: rotate(-2deg) scale(1); }
+  50%       { transform: rotate(2deg) scale(1.04); }
+}
+.gr-card-icon svg { width: 100%; height: 100%; }
+
+/* ── Card body ── */
+.gr-card-body { width: 100%; text-align: center; }
+
+.gr-card-underline {
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, #4FA8D8, #1C6EA4);
+  border-radius: 2px;
+  margin: 0 auto 0.85rem;
+  transition: width 0.3s ease;
+}
+.gr-card:hover .gr-card-underline,
+.gr-card--active .gr-card-underline { width: 64px; }
+
+.gr-card-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #12181F;
+  margin-bottom: 0.65rem;
+  line-height: 1.3;
+}
+
+.gr-card-desc {
+  font-size: 0.875rem;
+  color: #3A4650;
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
+/* ── Pagination dots ── */
+.gr-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2.25rem;
+}
+.gr-dot {
+  height: 8px;
+  border-radius: 4px;
+  border: none;
+  background: rgba(79,168,216,0.3);
+  cursor: pointer;
+  padding: 0;
+  transition: width 0.35s cubic-bezier(0.4,0,0.2,1), background 0.25s, box-shadow 0.25s;
+  width: 8px;
+}
+.gr-dot--active {
+  width: 28px;
+  background: #4FA8D8;
+  box-shadow: 0 0 10px rgba(79,168,216,0.55);
+}
+
+/* ── CTA button ── */
+.gr-cta-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.75rem;
+}
+.gr-cta-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.95rem 2.5rem;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #4FA8D8 0%, #1C6EA4 100%);
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(28,110,164,0.35), 0 0 0 0 rgba(79,168,216,0.4);
+  transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+  animation: gr-btn-pulse 3s ease-in-out infinite;
+  text-decoration: none;
+}
+@keyframes gr-btn-pulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(28,110,164,0.35), 0 0 0 0 rgba(79,168,216,0.4); }
+  50%       { box-shadow: 0 4px 28px rgba(28,110,164,0.45), 0 0 0 8px rgba(79,168,216,0); }
+}
+.gr-cta-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 36px rgba(28,110,164,0.45);
+  animation: none;
+}
+
+/* Shine sweep */
+.gr-cta-shine {
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.35) 50%, transparent 100%);
+  transform: skewX(-20deg);
+  animation: gr-shine 3.5s ease-in-out infinite;
+}
+@keyframes gr-shine {
+  0%   { left: -75%; }
+  40%  { left: 125%; }
+  100% { left: 125%; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .gr-cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .gr-card:nth-child(3) {
+    grid-column: 1 / -1;
+    max-width: 340px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .gr-nav-btn { display: none; }
+}
+
+@media (max-width: 600px) {
+  .gr-section { padding: 3.5rem 1rem 3rem; }
+  .gr-cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .gr-card:nth-child(3) {
+    grid-column: auto;
+    max-width: none;
+  }
+  .gr-card { padding: 1.75rem 1.25rem 1.5rem; }
+  .gr-card-icon { width: 64px; height: 64px; }
+  .gr-header { margin-bottom: 2.5rem; }
+}

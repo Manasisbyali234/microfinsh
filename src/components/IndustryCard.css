@@ -14,7 +14,7 @@
 
 .industry-img-wrap {
   position: relative;
-  height: 120px;
+  height: 180px;
   overflow: hidden;
 }
 .industry-img {
@@ -35,7 +35,7 @@
   left: 0.65rem;
   right: 0.65rem;
   font-family: var(--font-display);
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
   color: #fff;
