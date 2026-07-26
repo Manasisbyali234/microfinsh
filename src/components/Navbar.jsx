@@ -39,7 +39,7 @@ export default function Navbar() {
 
   // Only Home page has a full-viewport dark hero; all other pages need light navbar from the start
   const isHome = location.pathname === '/';
-  const lightNav = !isHome || scrolled;
+  const lightNav = !isHome || scrolled || menuOpen;
 
   useEffect(() => { setMenuOpen(false); setDropdown(null); }, [location]);
 
@@ -126,14 +126,14 @@ export default function Navbar() {
       </nav>
 
       {/* ── Bottom Tab Bar (mobile only) ── */}
-      <nav className="bottom-tab-bar mobile-only">
+      {!menuOpen && <nav className="bottom-tab-bar mobile-only">
         {NAV_TABS.map(tab => (
           <NavLink key={tab.to} to={tab.to} end={tab.to === '/'} className="tab-item">
             <span className="tab-icon">{tab.icon}</span>
             <span className="tab-label">{tab.label}</span>
           </NavLink>
         ))}
-      </nav>
+      </nav>}
     </>
   );
 }
