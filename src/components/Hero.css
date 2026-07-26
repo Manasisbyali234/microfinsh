@@ -88,9 +88,7 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding: 2rem 1.5rem 5rem;
-  margin-top: -56px;
-  padding-top: calc(56px + 2rem);
+  padding: calc(56px + 2rem) 1.5rem 5rem;
 }
 
 /* ── Background ── */
@@ -641,7 +639,7 @@
    RESPONSIVE
 ══════════════════════════════════════════════════════ */
 @media (max-width: 960px) {
-  .hero { padding: calc(56px + 1.5rem) 1.25rem 3rem; min-height: auto; }
+  .hero { padding: calc(56px + 1.5rem) 1.25rem 3rem; min-height: auto; margin-top: 0; }
   .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
   .hero-content { order: 1; }
   .hero-visual { order: 2; }
