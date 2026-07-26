@@ -13,24 +13,6 @@ const INDUSTRIES = [
   'Thermal Power Generation','Nuclear','Pharmaceutical','Food and Beverage','Desalination',
 ];
 
-const NAV_TABS = [
-  { to: '/',           label: 'Home',       icon: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-  )},
-  { to: '/about',      label: 'About',      icon: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-  )},
-  { to: '/products',   label: 'Products',   icon: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-  )},
-  { to: '/industries', label: 'Industries', icon: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="4" height="18"/><rect x="10" y="8" width="4" height="13"/><rect x="18" y="13" width="4" height="8"/></svg>
-  )},
-  { to: '/contact',    label: 'Contact',    icon: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-  )},
-];
-
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdown, setDropdown] = useState(null);
@@ -125,15 +107,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* ── Bottom Tab Bar (mobile only) ── */}
-      {!menuOpen && <nav className="bottom-tab-bar mobile-only">
-        {NAV_TABS.map(tab => (
-          <NavLink key={tab.to} to={tab.to} end={tab.to === '/'} className="tab-item">
-            <span className="tab-icon">{tab.icon}</span>
-            <span className="tab-label">{tab.label}</span>
-          </NavLink>
-        ))}
-      </nav>}
+
     </>
   );
 }
