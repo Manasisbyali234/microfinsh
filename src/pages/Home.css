@@ -247,17 +247,23 @@
   .about-teaser-img { height: 220px; border-radius: 16px; }
   .about-teaser-img-badge { bottom: -0.75rem; right: 0.75rem; border-radius: 12px; }
   .ind-carousel-item { flex: 0 0 calc((100% - 1.25rem) / 2); }
-  .cert-section { padding: 1rem 1rem; }
+  .cert-section { padding: 2rem 1rem; }
   .cert-row { justify-content: center; gap: 0.75rem; }
   .cert-badge { min-width: 120px; padding: 1rem; border-radius: 12px; }
-  .cta-banner { padding: 1rem 1rem; }
-  .cta-banner-inner { flex-direction: column; align-items: stretch; }
+  .cta-banner { padding: 2rem 1rem; }
+  .cta-banner-inner { flex-direction: column; align-items: stretch; gap: 1.5rem; }
   .cta-banner-actions { flex-direction: column; }
-  .cta-btn-outline, .cta-banner-actions .btn-primary { width: 100%; }
+  .cta-btn-outline, .cta-banner-actions .btn-primary { width: 100%; justify-content: center; }
+  .carousel-item { flex: 0 0 240px; height: 300px; }
+  .vision-grid { grid-template-columns: 1fr; }
+  .why-us-wrap { padding: 1.25rem; }
 }
 @media (max-width: 480px) {
   .ind-carousel-item { flex: 0 0 100%; }
-  .card-grid-4 > * { flex: 0 0 80vw; }
+  .cert-row { flex-direction: column; align-items: stretch; }
+  .cert-badge { min-width: 0; text-align: center; }
+  .carousel-item { flex: 0 0 200px; height: 260px; }
+  .about-teaser-img-badge { right: 0; bottom: -0.5rem; }
 }
 
 /* Founder strip in home about teaser */

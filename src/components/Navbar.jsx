@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
@@ -19,15 +19,21 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  // Only Home page has a full-viewport dark hero; all other pages need light navbar from the start
   const isHome = location.pathname === '/';
   const lightNav = !isHome || scrolled || menuOpen;
 
-  useEffect(() => { setMenuOpen(false); setDropdown(null); }, [location]);
+  const closeMenu = useCallback(() => { setMenuOpen(false); setDropdown(null); }, []);
+
+  useEffect(() => { closeMenu(); }, [location, closeMenu]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
-    // Re-check on route change (scroll position may not be 0 immediately)
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -72,7 +78,7 @@ export default function Navbar() {
           <button
             className={`nav-hamburger mobile-only ${menuOpen ? 'open' : ''}`}
             onClick={() => setMenuOpen(o => !o)}
-            aria-label="Menu"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           >
             <span /><span /><span />
           </button>
@@ -80,8 +86,8 @@ export default function Navbar() {
 
         {/* Mobile slide-down menu */}
         <div className={`mobile-menu mobile-only ${menuOpen ? 'open' : ''}`}>
-          <NavLink to="/" end className="mobile-menu-item">Home</NavLink>
-          <NavLink to="/about" className="mobile-menu-item">About</NavLink>
+          <NavLink to="/" end className="mobile-menu-item" onClick={closeMenu}>Home</NavLink>
+          <NavLink to="/about" className="mobile-menu-item" onClick={closeMenu}>About</NavLink>
 
           <div className={`mobile-accordion ${dropdown === 'products' ? 'open' : ''}`}>
             <button className="mobile-accordion-trigger" onClick={() => toggleDropdown('products')}>
@@ -89,7 +95,7 @@ export default function Navbar() {
               <svg className="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
             <div className="mobile-accordion-body">
-              {PRODUCTS.map(p => <Link key={p} to="/products" className="mobile-sub-item">{p}</Link>)}
+              {PRODUCTS.map(p => <Link key={p} to="/products" className="mobile-sub-item" onClick={closeMenu}>{p}</Link>)}
             </div>
           </div>
 
@@ -99,15 +105,13 @@ export default function Navbar() {
               <svg className="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
             <div className="mobile-accordion-body">
-              {INDUSTRIES.map(i => <Link key={i} to="/industries" className="mobile-sub-item">{i}</Link>)}
+              {INDUSTRIES.map(i => <Link key={i} to="/industries" className="mobile-sub-item" onClick={closeMenu}>{i}</Link>)}
             </div>
           </div>
 
-          <NavLink to="/contact" className="mobile-menu-item">Contact</NavLink>
+          <NavLink to="/contact" className="mobile-menu-item" onClick={closeMenu}>Contact</NavLink>
         </div>
       </nav>
-
-
     </>
   );
 }

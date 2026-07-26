@@ -98,12 +98,23 @@ a { color: inherit; text-decoration: none; }
 .btn-secondary:hover  { background: var(--color-ink); color: var(--color-white); }
 .btn-secondary:active { transform: scale(0.97); }
 
+/* ── Fixed navbar offset ── */
+/* The navbar is fixed (56px tall). Non-hero page headers need padding-top to clear it.
+   The hero handles its own offset via margin-top: -56px + padding-top: calc(56px + …) */
+.page-header {
+  padding-top: 56px;
+}
+
 /* ── Section wrapper ── */
-.section { padding: 1.75rem 1.5rem; }
-.container { max-width: var(--max-w); margin: 0 auto; width: 100%; }
+.section { padding: 3rem 1.5rem; }
+.container { max-width: var(--max-w); margin: 0 auto; width: 100%; padding: 0 1rem; }
 
 @media (max-width: 768px) {
-  .section { padding: 1rem 1rem; }
+  .section { padding: 2rem 1rem; }
+  .container { padding: 0 0.875rem; }
+}
+@media (max-width: 480px) {
+  .section { padding: 1.5rem 0.875rem; }
 }
 
 /* ── Section heading ── */

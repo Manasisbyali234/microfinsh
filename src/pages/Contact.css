@@ -2,6 +2,7 @@
 .contact-header {
   position: relative;
   padding: 0;
+  padding-top: 56px;
   overflow: hidden;
   min-height: 320px;
   display: flex;
@@ -177,9 +178,15 @@
 .contact-office-img-wrap:hover .contact-office-img { transform: scale(1.04); }
 
 @media (max-width: 900px) {
-  .contact-layout { grid-template-columns: 1fr; }
+  .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
 }
 @media (max-width: 540px) {
   .form-row { grid-template-columns: 1fr; }
   .contact-header-content { padding: 2.5rem 1rem; }
+  .contact-header { min-height: 220px; }
+  .contact-socials { gap: 0.4rem; }
+  .contact-social-icon { font-size: 0.75rem; padding: 0.3rem 0.55rem; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea { font-size: 1rem; } /* prevent iOS zoom */
 }

@@ -41,3 +41,8 @@
   color: #fff;
   line-height: 1.2;
 }
+
+@media (max-width: 480px) {
+  .industry-img-wrap { height: 150px; }
+  .industry-name { font-size: 0.78rem; }
+}
